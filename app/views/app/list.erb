@@ -1,0 +1,6 @@
+<h1>Oh aï !</h1>
+<% @apps.each do |app| %>
+    <h2><%= app.id %></h2>
+    <div><%= app.git_url %></div>
+    <br />
+<% end %>
