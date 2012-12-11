@@ -97,14 +97,14 @@ Enfin, si l'App dans "testing" est considérée comme assez robuste, un maintene
 
 
 #### Voir une app
-**URL:** GET /app/appid (l'appid sera de la forme nom.auteur)
+**URL:** GET /app/*appid* (l'appid sera de la forme nom.auteur)
 
 **Items à afficher:**
 - Infos de l'app (pour le moment nom, auteur, description, dépendances, icône et date de création + màj)
 - Lien "Update App's informations"
 - Lien "Grant to 'testing'" (ou stable)
 - Liste des commentaires de cette App
-- Lien vers 'flux RSS des commentaires de cette App' ( GET /comment/appid/list en XML )
+- Lien vers 'flux RSS des commentaires de cette App' ( GET /comment/*appid*/list en XML )
 - Formulaire d'ajout de commentaire avec:
  * Pseudo
  * Commentaire
@@ -113,7 +113,7 @@ Enfin, si l'App dans "testing" est considérée comme assez robuste, un maintene
 
 
 #### Ajouter un commentaire
-**URL:** POST /comment/appid/new
+**URL:** POST /comment/*appid*/new
 
 **Actions:**
 - Vérifier le captcha
@@ -121,7 +121,7 @@ Enfin, si l'App dans "testing" est considérée comme assez robuste, un maintene
 
 
 #### Ecran de mise à jour d'une app
-**URL:** GET /app/appid/edit
+**URL:** GET /app/*appid*/edit
 
 **Items à afficher:**
 - Formulaire contenant:
@@ -136,7 +136,7 @@ Enfin, si l'App dans "testing" est considérée comme assez robuste, un maintene
 
 
 #### Mettre à jour une app
-**URL:** POST /app/appid
+**URL:** POST /app/*appid*
 
 **Actions:**
 - Vérifier le captcha
@@ -144,7 +144,7 @@ Enfin, si l'App dans "testing" est considérée comme assez robuste, un maintene
 
 Si l'App est dans une liste autre que community
 - Enregistrer la request de type "update" en base (mdp hashé MD5)
-- Mailer l'adresse new-request@yunohost.org avec les informations et le type de la request (+ le lien /request/<id>)
+- Mailer l'adresse new-request@yunohost.org avec les informations et le type de la request (+ le lien /request/*id*)
 - Mailer l'adresse mail du créateur de la request pour lui indiquer que la request a été prise en compte
 
 Sinon
@@ -152,7 +152,7 @@ Sinon
 
 
 #### Ecran de demande de promotion de liste
-**URL:** GET /app/appid/grant
+**URL:** GET /app/*appid*/grant
 
 **Items à afficher:**
 - Informations du Git de l'App (url, branch et sha1)
@@ -163,22 +163,22 @@ Sinon
 
 
 #### Promotion de liste
-**URL:** POST /app/appid/grant
+**URL:** POST /app/*appid*/grant
 
 **Actions:**
 - Vérifier le captcha
 - Vérifier le mot de passe
 - Enregistrer la request de type "grant" en base
-- Mailer l'adresse new-request@yunohost.org avec les informations et le type de la request (+ le lien /request/<id>)
+- Mailer l'adresse new-request@yunohost.org avec les informations et le type de la request (+ le lien /request/*id*)
 - Mailer l'adresse mail du créateur de la request pour lui indiquer que la request a été prise en compte
 
 
 #### Listing "RAW" des applis
 **URL:** GET /app/list/raw
 
-**Items à retourner (en yaml json par exemple):**
+**Items à retourner (en json):**
 
-*Exemple :* http://kload.fr/fapp
+*Résultat :* http://kload.fr/fapp
 - Date de mise à jour (timestamp)
 - Appid
 - List (community, testing ou stable)
@@ -200,7 +200,7 @@ Sinon
 
 
 #### Voir la request
-**URL:** GET /request/<id> (accessible pour les admins uniquement)
+**URL:** GET /request/*id* (accessible pour les admins uniquement)
 
 **Items à afficher:**
 - Informations du Git de la request (url, branche, sha1)
@@ -208,7 +208,7 @@ Sinon
 
 
 #### Valider la request
-**URL:** POST /request/<id>/validate (accessible uniquement par les testers)
+**URL:** POST /request/*id*/validate (accessible uniquement par les testers)
 
 **Actions:**
 - Fetch le dépôt git indiqué dans la request
@@ -220,7 +220,7 @@ Sinon
 
 
 #### Ecran de réinitialisation du mot de passe
-**URL:** GET /app/appid/dafuq-password
+**URL:** GET /app/*appid*/dafuq-password
 
 **Items à afficher:**
 - Formulaire de demande d'email
@@ -228,16 +228,16 @@ Sinon
 
 
 #### Envoi de la demande de réinitialisation
-**URL:** POST /app/appid/dafuq-password
+**URL:** POST /app/*appid*/dafuq-password
 
 **Actions:**
 - Vérifier le captcha
 - Création d'un token
-- Envoi d'un email contenant le lien /dafuq-password/<token>
+- Envoi d'un email contenant le lien /dafuq-password/*token*
 
 
 #### Réinitialiser le mot de passe
-**URL:** GET /app/appid/dafuq-password/<token>
+**URL:** GET /app/appid/dafuq-password/*token*
 
 **Actions:**
 - Vérifier la présence du token en base
