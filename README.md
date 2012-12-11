@@ -14,6 +14,8 @@ Enfin, si l'App dans "testing" est considérée comme assez robuste, un maintene
 
 **Remarque:** Le site sera multilingue (l'intégration I18n de padrino suffit)
 
+**Remarque 2:** Les captcha seront en JS (calcul côté client)
+
 ## Modèles
 #### User
 * nick (clé)
@@ -66,7 +68,7 @@ Enfin, si l'App dans "testing" est considérée comme assez robuste, un maintene
  * La revision (shawan du commit)
  * Email
  * Mot de passe (pour l'édition et les demandes de mise à jour de l'app)
- * Un captcha (un human captcha mathématique de préférence)
+ * Un captcha
 
 
 #### Enregistrer l'app
@@ -176,6 +178,7 @@ Enfin, si l'App dans "testing" est considérée comme assez robuste, un maintene
 - Revision
 - Lien vers le manifest
 - Lien vers l'icône
+
 **Note:** Cette liste devrait être mise en cache
 
 
@@ -203,6 +206,7 @@ Enfin, si l'App dans "testing" est considérée comme assez robuste, un maintene
 - Vérifier la présence du token en base
 - Changer le mot de passe par un aléatoire
 - Mailer le nouveau mot de passe avec le lien vers "Mettre à jour l'app"
+
 **Items à afficher:**
 - "Votre mot de passe a bien été réinitialisé, merci de check vos mail modafaka"
 
