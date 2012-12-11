@@ -1,6 +1,16 @@
 FAPP - YunoHost Free Application's Portal
 =========================================
-#### Plateforme de contribution et de consultation simplifiée d'app pour YunoHost
+
+### Description
+FAPP est un portail Web permettant de consulter et de contribuer facilement des Apps pour YunoHost. N'importe qui pourra, sans s'enregistrer, ajouter son application (Web et/ou non), en renseignant simplement son repo Git, son email et un mot de passe pour sa page d'App.
+Le repo Git devra contenir le manifest de l'App, et les informations (nom, icône, description, dépendances, etc.) seront visible sur la page de l'App.
+
+Par défaut, l'App sera placée parmis la liste "community" sans modération, et sera disponible sur toutes les instances YunoHost ayant choisie d'utiliser la liste "community".
+
+Par la suite, le contributeur de l'App pour demander à ce que son App soit placée dans la liste "testing", si il considère l'App assez stable. Un validateur s'occupera alors de vérifier le code et le fonctionnement de celle-ci.
+
+Enfin, si l'App dans "testing" est considérée comme assez robuste, un mainteneur est assigné à l'App qui est placée dans la liste "stable".
+
 
 **Remarque:** Le site sera multilingue (l'intégration I18n de padrino suffit)
 
