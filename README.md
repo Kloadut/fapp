@@ -21,9 +21,7 @@ Enfin, si l'App dans "testing" est considérée comme assez robuste, un maintene
 * nick (clé)
 * password
 * email
-* is_admin
-* is_maintainer
-* is_tester
+* role
 
 #### Comment 
 * id (clé)
