@@ -20,7 +20,7 @@ class Admin < Padrino::Application
   # layout  :my_layout              # Layout can be in views/layouts/foo.ext or views/foo.ext (default :application)
   #
 
-  set :admin_model, 'Account'
+  set :admin_model, 'User'
   set :login_page, "/admin/sessions/new"
 
   enable  :sessions
@@ -32,7 +32,7 @@ class Admin < Padrino::Application
   end
 
   access_control.roles_for :admin do |role|
-    role.project_module :accounts, '/accounts'
+    role.project_module :users, '/users'
   end
 
   access_control.roles_for :maintener do |role|
