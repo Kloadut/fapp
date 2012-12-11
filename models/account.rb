@@ -3,8 +3,7 @@ class Account
   attr_accessor :password, :password_confirmation
 
   # Keys
-  key :name,             String
-  key :surname,             String
+  key :nick,             String
   key :email,            String
   key :crypted_password, String
   key :role,             String
@@ -19,8 +18,10 @@ class Account
   validates_confirmation_of :password,                   :if => :password_required
   validates_length_of       :email,    :within => 3..100
   validates_uniqueness_of   :email,    :case_sensitive => false
+  validates_uniqueness_of   :nick,     :case_sensitive => false
   validates_format_of       :email,    :with => /\A([^@\s]+)@((?:[-a-z0-9]+\.)+[a-z]{2,})\Z/i
   validates_format_of       :role,     :with => /[A-Za-z]/
+  validates_format_of       :nick,     :with => /\w/
 
   # Callbacks
   before_save :encrypt_password, :if => :password_required
@@ -28,8 +29,8 @@ class Account
   ##
   # This method is for authentication purpose
   #
-  def self.authenticate(mail, password)
-    account = first(:email => mail) if mail.present?
+  def self.authenticate(nick, password)
+    account = first(:nick => nick) if nick.present?
     account && account.has_password?(password) ? account : nil
   end
 

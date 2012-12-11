@@ -5,7 +5,7 @@ Admin.controllers :sessions do
   end
 
   post :create do
-    if account = Account.authenticate(params[:email], params[:password])
+    if account = Account.authenticate(params[:nick], params[:password])
       set_current_account(account)
       redirect url(:base, :index)
     elsif Padrino.env == :development && params[:bypass]
@@ -13,7 +13,7 @@ Admin.controllers :sessions do
       set_current_account(account)
       redirect url(:base, :index)
     else
-      params[:email], params[:password] = h(params[:email]), h(params[:password])
+      params[:nick], params[:password] = h(params[:nick]), h(params[:password])
       flash[:warning] = "Login or password wrong."
       redirect url(:sessions, :new)
     end
