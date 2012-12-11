@@ -35,7 +35,7 @@ class Admin < Padrino::Application
     role.project_module :users, '/users'
   end
 
-  access_control.roles_for :maintener do |role|
+  access_control.roles_for :maintainer do |role|
   end
 
   access_control.roles_for :tester do |role|

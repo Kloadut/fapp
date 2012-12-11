@@ -36,7 +36,7 @@ Enfin, si l'App dans "testing" est considérée comme assez robuste, un maintene
 * name
 * dependencies (optionnal)
 * description (optionnal)
-* maintainer (optionnal)
+* maintainer (optionnal, relation avec User)
 * list
 * git_url
 * git_branch
