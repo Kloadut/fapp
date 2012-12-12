@@ -1,6 +1,7 @@
 Fapp.controllers :app do
     get :list do
         @apps = App.all(:order => 'created_at desc')
+        captcha_create
         render 'app/list'
     end
 
@@ -14,8 +15,6 @@ Fapp.controllers :app do
     end
 
     post :new do
-        # TODO: Verify captcha
-        # TODO: Compute inputs
         redirect to('/app/list')
     end
 end

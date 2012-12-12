@@ -1,6 +1,8 @@
 <h1>Oh aï !</h1>
+<h3><%= session[:ip] %></h3>
 <% @apps.each do |app| %>
     <h2><%= app.id %></h2>
     <div><%= app.git_url %></div>
     <br />
+    <%= @captcha %>
 <% end %>

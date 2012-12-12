@@ -6,6 +6,10 @@ class Fapp < Padrino::Application
 
   enable :sessions
 
+  set :sessions,
+  :secret       => 'megusta',
+  :expire_after => 1.year
+
   ##
   # Caching support
   #
