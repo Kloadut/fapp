@@ -1,0 +1,49 @@
+<div class="group">
+  <%= f.label :app_id %><%= f.error_message_on :app_id %>
+  <%= f.text_field :app_id, :class => :text_field %>
+</div>
+<div class="group">
+  <%= f.label :author_email %><%= f.error_message_on :author_email %>
+  <%= f.text_field :author_email, :class => :text_field %>
+</div>
+<div class="group">
+  <%= f.label :author_password %><%= f.error_message_on :author_password %>
+  <%= f.password_field :author_password, :class => :password_field %>
+</div>
+<div class="group">
+  <%= f.label :author_password_confirmation %><%= f.error_message_on :author_password_confirmation %>
+  <%= f.password_field :author_password_confirmation, :class => :password_field %>
+</div>
+<div class="group">
+  <%= f.label :name %><%= f.error_message_on :name %>
+  <%= f.text_field :name, :class => :text_field %>
+</div>
+<div class="group">
+  <%= f.label :description %><%= f.error_message_on :description %>
+  <%= f.text_field :description, :class => :text_field %>
+</div>
+<div class="group">
+  <%= f.label :dependencies %><%= f.error_message_on :dependencies %>
+  <%= f.text_field :dependencies, :class => :text_field %>
+</div>
+<div class="group">
+  <%= f.label :maintainers %><%= f.error_message_on :maintainers %>
+  <%= f.text_field :maintainers, :class => :text_field %>
+</div>
+<div class="group">
+  <%= f.label :git_url %><%= f.error_message_on :git_url %>
+  <%= f.text_field :git_url, :class => :text_field %>
+</div>
+<div class="group">
+  <%= f.label :git_branch %><%= f.error_message_on :git_branch %>
+  <%= f.text_field :git_branch, :class => :text_field %>
+</div>
+<div class="group">
+  <%= f.label :git_commit %><%= f.error_message_on :git_commit %>
+  <%= f.text_field :git_commit, :class => :text_field %>
+</div>
+
+<div class="group navform wat-cf">
+  <%= f.submit pat(:save), :class => :button %>
+  <%= f.submit pat(:cancel), :onclick => "window.location='#{url(:apps, :index)}';return false", :class => :button %>
+</div>

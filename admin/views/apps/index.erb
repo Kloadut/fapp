@@ -1,0 +1,52 @@
+<div class="block">
+  <div class="secondary-navigation">
+    <ul class="wat-cf">
+      <li class="first active"><%= link_to pat(:list), url(:apps, :index) %></li>
+      <li><%= link_to pat(:new), url(:apps, :new) %></li>
+    </ul>
+  </div>
+  <div class="content">
+    <h2 class="title"><%= pat(:all) %> <% mt(:apps) %></h2>
+    <div class="inner">
+      <table class="table">
+        <tr>
+          <th class="first"><%= mat(:app, :app_id) %></th>
+          <th><%= mat(:app, :author_email) %></th>
+          <th><%= mat(:app, :name) %></th>
+          <th><%= mat(:app, :description) %></th>
+          <th><%= mat(:app, :dependencies) %></th>
+          <th><%= mat(:app, :maintainers) %></th>
+          <th><%= mat(:app, :git_url) %></th>
+          <th><%= mat(:app, :git_branch) %></th>
+          <th><%= mat(:app, :git_commit) %></th>
+          <th><%= mat(:app, :created_at) %></th>
+          <th><%= mat(:app, :updated_at) %></th>
+          <th class="last">&nbsp;</th>
+        </tr>
+        <% @apps.each do |app| %>
+        <tr>
+          <td class="first"><%= app.app_id %></td>
+          <td><%= app.author_email %></td>
+          <td><%= app.name %></td>
+          <td><%= app.description %></td>
+          <td><%= app.dependencies %></td>
+          <td><%= app.maintainers %></td>
+          <td><%= app.git_url %></td>
+          <td><%= app.git_branch %></td>
+          <td><%= app.git_commit %></td>
+          <td><%= app.created_at %></td>
+          <td><%= app.updated_at %></td>
+          <td class="last">
+            <%= button_to pat(:edit), url(:apps, :edit, :id => app.id), :method => :get, :class => :button_to %> |
+            <%= button_to pat(:delete), url(:apps, :destroy, :id => app.id), :method => :delete, :class => :button_to, :onsubmit => "return confirm('#{pat(:confirm)}')" %>
+          </td>
+        </tr>
+        <% end %>
+      </table>
+      <div class="actions-bar wat-cf">
+        <div class="actions"></div>
+      </div>
+    </div>
+  </div>
+</div>
+<% content_for :sidebar, partial("base/sidebar") %>
