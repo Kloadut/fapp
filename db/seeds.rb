@@ -8,6 +8,7 @@
 nick      = shell.ask "Which nick do you want use for logging into admin?"
 email     = shell.ask "Gimme gimme gimme an email:"
 password  = shell.ask "Tell me the password to use:"
+app       = shell.ask "Do you want to additionally create a sample App ? (yes/NO)"
 
 shell.say ""
 
@@ -24,6 +25,32 @@ else
   shell.say "Sorry but some thing went wrong!"
   shell.say ""
   account.errors.full_messages.each { |m| shell.say "   - #{m}" }
+end
+
+if  app == "y" ||
+    app == "yes" ||
+    app == "true" ||
+    app == "oui" ||
+    app == "o"
+
+    sample_app = App.create(:app_id                        => "sample." + nick,
+                            :author_email                  => email,
+                            :author_password               => password,
+                            :author_password_confirmation  => password,
+                            :name                          => "SamplApp",
+                            :git_url                       => "https://github.com/TibshoOT/fapp",
+                            :git_branch                    => "master",
+                            :git_commit                    => "171a708261cdf22dca4b3cfddce509be73a81b89")
+
+    if sample_app
+        shell.say "================================================================="
+        shell.say "Sample App has been successfully created"
+        shell.say "================================================================="
+    else
+        shell.say "Sorry but some thing went wrong!"
+        shell.say ""
+        account.errors.full_messages.each { |m| shell.say "   - #{m}" }
+    end
 end
 
 shell.say ""
