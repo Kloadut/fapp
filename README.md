@@ -1,4 +1,4 @@
-FAPP - YunoHost Free Application's Portal
+FAPP - YunoHost Fancy Application's Portal
 =========================================
 
 ### Description

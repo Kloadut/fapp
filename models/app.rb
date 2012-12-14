@@ -1,6 +1,6 @@
 class App
   include MongoMapper::Document
-  attr_accessor :password, :password_confirmation
+  attr_accessor :author_password, :author_password_confirmation
 
   # key <name>, <type>
   key :app_id, String

@@ -34,6 +34,13 @@ Bundler.require(:default, PADRINO_ENV)
 # Add your before (RE)load hooks here
 #
 Padrino.before_load do
+    I18n.default_locale = :en
+
+    #TODO: Load from browser's pref
+    #I18n.default_locale = request.env['HTTP_ACCEPT_LANGUAGE'].scan(/^[a-z]{2}/).first
+
+    # Gettext-like translation for padrino (returns key if ain't got no translation)
+    I18n.exception_handler = lambda { |exception, locale, key, options| key }
 end
 
 ##

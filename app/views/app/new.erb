@@ -1,0 +1,39 @@
+<form action="<%= url(:app, :new) %>" method="post">
+
+    <h2>App</h2>
+    <div>
+        <label for="app_id"><%=t "App ID" %></label>
+        <input type="text" name="app_id" value="author.Appname" />
+    </div>
+    <div>
+        <label for="git_url"><%=t "Git repository (URL)" %></label>
+        <input type="text" name="git_url" value="http://github.com/..." />
+    </div>
+    <div>
+        <label for="git_branch"><%=t "Branch" %></label>
+        <input type="text" name="git_branch" value="master" />
+    </div>
+    <div>
+        <label for="git_commit"><%=t "Commit (sha1)" %></label>
+        <input type="text" name="git_commit" value="4f3cf88623cedb293530927b083a1e3a154e4490" />
+    </div>
+
+    <h2>Author</h2>
+    <div>
+        <label for="author_email"><%=t "Email" %></label>
+        <input type="test" name="author_email" value="homer@simpson.org" />
+    </div>
+    <div>
+        <label for="author_password"><%=t "Password" %></label>
+        <input type="password" name="author_password" />
+    </div>
+    <div>
+        <label for="author_password_confirmation"><%=t "Retype password" %></label>
+        <input type="password" name="author_password_confirmation" />
+    </div>
+    <%= @captcha %>
+
+    <div>
+        <input type="submit" value="Submit">
+    </div>
+</form>

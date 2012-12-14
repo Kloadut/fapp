@@ -1,7 +1,7 @@
 Fapp.controllers :app do
+
     get :list do
         @apps = App.all(:order => 'created_at desc')
-        captcha_create
         render 'app/list'
     end
 
@@ -10,11 +10,22 @@ Fapp.controllers :app do
         render 'app/show'
     end
 
-    get '/app/new' do
+    get :new do
+        captcha_create
         render 'app/new'
     end
 
     post :new do
-        redirect to('/app/list')
+        captcha_validate
+        @app = App.new(params[:post])
+        logger.info params
+        if @app.save
+            flash[:notice] = t "App was successfully created."
+            redirect url(:app, :list)
+        else
+            flash[:warning] = t "An error occurred during App creation."
+            redirect url(:app, :new)
+        end
     end
+
 end
